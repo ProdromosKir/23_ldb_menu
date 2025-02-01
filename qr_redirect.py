@@ -1,6 +1,6 @@
 import qrcode
 
-url = "http://localhost:5000"
+url = "https://two3-ldb-menu.onrender.com/"
 
 qr = qrcode.QRCode(
     version=1,

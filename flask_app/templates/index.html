@@ -152,6 +152,42 @@
                 opacity: 1;
             }
         }
+
+        /* Mobile Styles (for small devices like smartphones) */
+@media (max-width: 768px) {
+    /* Reduce grid columns to 2 */
+    ul {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Make the food title smaller on mobile */
+    .food_title {
+        font-size: 16px;
+    }
+
+    /* Adjust padding for the list items */
+    li {
+        padding: 10px;
+    }
+}
+
+/* Styles for very small screens (like mobile phones in portrait mode) */
+@media (max-width: 480px) {
+    /* Stack the food items in a single column */
+    ul {
+        grid-template-columns: 1fr;
+    }
+
+    /* Further reduce food title size */
+    .food_title {
+        font-size: 14px;
+    }
+
+    /* Further reduce padding for small screens */
+    li {
+        padding: 8px;
+    }
+}
     </style>
 </head>
 <body>
