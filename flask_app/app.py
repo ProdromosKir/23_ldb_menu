@@ -1,6 +1,6 @@
 import pandas as pd
 from flask import Flask, render_template
-from werkzeug.utils import quote
+from urllib.parse import quote
 import os
 
 
