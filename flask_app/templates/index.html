@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Items</title>
+    <!-- External CSS for Styling -->
+    <style>
+        body {
+            background-image: url("https://www.shutterstock.com/image-vector/trendy-camouflage-military-pattern-vector-600nw-2458568219.jpg");
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .logo-container {
+            margin-top: 50px;
+        }
+
+        .logo {
+            width: 150px; /* Adjust this size to your logo's dimensions */
+            height: auto;
+        }
+
+        h1 {
+            font-family: 'Courier New', Courier, monospace;  /* Military-style font */
+            font-weight: bold;
+            font-size: 3em;
+            color: #2f4f2f;  /* Army green color */
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-top: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);  /* Slight shadow for impact */
+        
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            display:grid; 
+            grid-template-columns: repeat(4, minmax(250px,1fr));
+            gap:20px;
+            justify-content: center;
+        }
+
+        li {
+            background-color: #fff;
+            margin: 10px;
+            padding: 6px 2px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        li img {
+            width: 100px;  /* Adjust the size of the image */
+            height: auto;
+            margin-top: 10px;
+        }
+
+        li a {
+            text-decoration: none;
+            color: #3498db;
+        }
+
+        li a:hover {
+            text-decoration: underline;
+        }
+
+        li:hover {
+    transform: translateY(-5px); /* Moves the item slightly upward */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Makes the shadow stronger when hovering */
+}
+
+        .food_title{
+            display: inline-block;
+            background: white;
+            padding: 2px 0px;
+            font-family: 'Courier New', Courier, monospace;  /* Military-style font */
+            font-weight: bold;
+            font-size: 1.4rem;
+            color: #080f08;  /* Army green color */
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-top: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            
+            animation: slideIn 1s ease-out forwards;
+            opacity: 0;
+        }
+        .value{
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.1rem;
+            color: #444;
+            letter-spacing:-1.50px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+
+        }
+        .food_images{
+            width: 60%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-top: 10px;
+            animation: slideIn 1s ease-out forwards;
+            opacity: 0;
+        }
+        .logo_image{
+            width: 200px;
+            height: auto;
+        }
+
+        .title{
+            display: inline-block;
+            background-color: white;
+            border-radius: 12px;
+        }
+        .menu-categories{
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .category-btn {
+            background-color: #1a5722;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .category-btn:hover {
+            background-color: #5aaa46;
+        }
+
+        .category-btn.active {
+            background-color: #5aaa46; /* Different color for the active category */
+        }
+
+        @keyframes slideIn{
+            0%{
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            100%{
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo Section -->
+    <div class="logo-container">
+        <img class="logo_image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyeuMes4A6y3jwpUeBr2US1WWUnF4Sy-OHyg&s" alt="Logo" class="logo">
+    </div>
+
+    <!-- Title Section -->
+    <h1 class="title">23 ΛΔΒ ΜΕΝΟΥ</h1>
+
+    <div class="menu-categories">
+        <button class="category-btn" data-category="all">Όλα</button>
+        <button class="category-btn" data-category="foods">Φαγητά</button>
+        <button class="category-btn" data-category="beverages">Ποτά</button>
+    </div>
+
+    <!-- Food Items List -->
+    <ul>
+        {% for item in food_items %}
+            <li class="menu-item" data-category="{% if item.category == 'Φαγητό' %}foods{% elif item.category == 'Ποτό' %}beverages{% else %}other{% endif %}">
+                <strong class="food_title">{{ item.food }}</strong><br>
+                <i class="value">Τιμή:{{ item.value }}€ <br></i>
+                <!-- Display the image from the URL -->
+                <img class="food_images" src="{{ item.url }}" alt="Image for {{ item.food }}">
+            </li>
+        {% endfor %}
+    </ul>
+
+
+
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const buttons = document.querySelectorAll(".category-btn");
+            const foodItems = document.querySelectorAll(".menu-item");
+
+            buttons.forEach(button => {
+                button.addEventListener("click", function () {
+                    const category = this.getAttribute("data-category");
+
+                    // Remove 'active' class from all buttons
+                    buttons.forEach(btn => btn.classList.remove("active"));
+                    this.classList.add("active");
+
+                    // Show/Hide items based on category
+                    foodItems.forEach(item => {
+                        if (category === "all" || item.getAttribute("data-category") === category) {
+                            item.style.display = "block";
+                        } else {
+                            item.style.display = "none";
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
