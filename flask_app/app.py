@@ -31,7 +31,7 @@ for _, row in df.iterrows():
     food_items.append(food_item)
 
 for item in food_items:
-    print(item.category)
+    print(item.food)
 
 
 @app.route('/')
