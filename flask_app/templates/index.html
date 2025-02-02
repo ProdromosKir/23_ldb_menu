@@ -13,7 +13,32 @@
             margin: 0;
             padding: 0;
             background-color: #f0f0f0;
+            font-size: 18px;
+            background-size: cover;
+            background-position: center;
         }
+
+    /* Mobile screens (up to 768px) */
+    @media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+    
+    .container {
+        flex-direction: column; /* Stack elements vertically */
+    }
+    }
+
+    /* Small phones (up to 480px) */
+    @media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+    
+    .menu {
+        display: none; /* Hide large menus */
+    }
+    }
 
         .logo-container {
             margin-top: 50px;
@@ -36,6 +61,27 @@
         
         }
 
+        @media (max-width: 768px) {
+    .logo {
+        width: 100px; /* Make logo smaller on mobile */
+    }
+
+    h1 {
+        font-size: 2em; /* Reduce title size */
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        width: 80px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+}
+
+
         ul {
             list-style-type: none;
             padding: 0;
@@ -44,6 +90,26 @@
             gap:20px;
             justify-content: center;
         }
+
+    @media (max-width:1024px){
+        ul{
+            grid-template-columns: repeat(3,minmax(150px,1fr));
+        }
+
+        @media (max-width: 768px) {
+    ul {
+        grid-template-columns: repeat(2, minmax(150px, 1fr)); /* 2 columns for small tablets */
+    }
+        }
+
+        @media (max-width: 480px) {
+            ul {
+                grid-template-columns: repeat(1, minmax(150px, 1fr)); /* 1 column for phones */
+            }
+
+
+        }
+}
 
         li {
             background-color: #fff;
@@ -59,6 +125,7 @@
             width: 100px;  /* Adjust the size of the image */
             height: auto;
             margin-top: 10px;
+            max-width: 100%;
         }
 
         li a {
@@ -108,6 +175,14 @@
             animation: slideIn 1s ease-out forwards;
             opacity: 0;
         }
+
+        @media (max-width: 480px) {
+    .food_images {
+        width: 80%; /* Prevent images from being too small */
+        max-height: 150px; /* Adjust max height */
+    }
+}
+
         .logo_image{
             width: 200px;
             height: auto;
@@ -133,6 +208,15 @@
             cursor: pointer;
             transition: background 0.3s ease;
         }
+
+        @media (max-width: 480px) {
+    .category-btn {
+        width: 90%; /* Full width buttons on small screens */
+        display: block; /* Stack buttons vertically */
+        margin: 10px auto; /* Center buttons */
+    }
+}
+
 
         .category-btn:hover {
             background-color: #5aaa46;
@@ -189,6 +273,9 @@
     }
 }
     </style>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
 <body>
     <!-- Logo Section -->
