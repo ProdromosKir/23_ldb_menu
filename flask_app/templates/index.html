@@ -42,12 +42,26 @@
 
         .logo-container {
             margin-top: 50px;
+            animation: fadeInLogo 2.1s ease-out forwards;
+
         }
 
         .logo {
             width: 150px; /* Adjust this size to your logo's dimensions */
             height: auto;
+            opacity: 0;
         }
+
+    @keyframes fadeInLogo {
+        0% {
+            opacity: 0; /* Start fully transparent */
+        }
+        100% {
+            opacity: 1; /* End fully visible */
+        }
+    }
+
+
 
         h1 {
             font-family: 'Courier New', Courier, monospace;  /* Military-style font */
