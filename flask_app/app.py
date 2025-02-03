@@ -31,11 +31,7 @@ class FoodItem:
 @app.route('/')
 def index():
 
-    load_dotenv()
-    google_sheet_url = os.getenv("GOOGLE_SHEET_URL")
-    print(google_sheet_url)
-    if not google_sheet_url:
-        print("There is no url for the google sheet")
+    google_sheet_url = "https://docs.google.com/spreadsheets/d/1gYnWMG9MZigPiUTaWvz5NEC_S8Fb11HGhXmUmvOvG4g/pub?output=csv"
     # Read the CSV data from the Google Sheet
     df = pd.read_csv(google_sheet_url)
 
