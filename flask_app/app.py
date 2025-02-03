@@ -2,6 +2,7 @@ import pandas as pd
 from flask import Flask, render_template
 from urllib.parse import quote
 import os
+from dotenv import load_dotenv
 
 
 
@@ -11,8 +12,8 @@ import os
 app = Flask(__name__)
 
 
-# Replace this URL with the link to your Google Sheet (CSV format)
-sheet_url = "https://docs.google.com/spreadsheets/d/1gYnWMG9MZigPiUTaWvz5NEC_S8Fb11HGhXmUmvOvG4g/pub?output=csv"
+google_sheet_url = os.getenv("GOOGLE_SHEET_URL")
+
 
 
 
@@ -31,7 +32,7 @@ class FoodItem:
 @app.route('/')
 def index():
     # Read the CSV data from the Google Sheet
-    df = pd.read_csv(sheet_url)
+    df = pd.read_csv(google_sheet_url)
 
     food_items = []
 
@@ -48,6 +49,7 @@ if __name__ == "__main__":
     # Render provides the port as an environment variable
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
+
 
 
 
