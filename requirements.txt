@@ -4,3 +4,4 @@ gspread==5.0.0
 oauth2client==4.1.3
 pandas
 werkzeug==2.2.2
+python-dotenv
