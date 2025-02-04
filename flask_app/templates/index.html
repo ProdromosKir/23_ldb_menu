@@ -7,14 +7,17 @@
     <!-- External CSS for Styling -->
     <style>
         body {
-            background-image: url("https://www.shutterstock.com/image-vector/trendy-camouflage-military-pattern-vector-600nw-2458568219.jpg");
+            background-image: url("https://t4.ftcdn.net/jpg/02/40/63/55/360_F_240635575_EJifwRAbKsVTDnA3QE0bCsWG5TLhUNEZ.jpg");
             font-family: Arial, sans-serif;
             text-align: center;
             margin: 0;
             padding: 0;
             background-color: #f0f0f0;
             font-size: 18px;
-            background-size: cover;
+            background-size : cover;
+            background-repeat: no-repeat;
+            height: 100vh;
+            
             background-position: center;
         }
 
@@ -207,6 +210,7 @@
             background-color: white;
             border-radius: 12px;
             padding: 15px;
+            color: rgb(60, 67, 173);
         }
         .menu-categories{
             text-align: center;
@@ -218,8 +222,9 @@
         
 
         .category-btn {
-            background-color: #1a5722;
-            color: white;
+            background-color: #ffffff;
+            color: rgb(60, 67, 173);
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
             border: none;
             padding: 10px 15px;
             margin: 5px;
@@ -299,7 +304,7 @@
 <body>
     <!-- Logo Section -->
     <div class="logo-container">
-        <img class="logo_image" src="{{ url_for('static', filename='images/diabibastes_logo.png') }}" alt="Logo" class="logo">
+        <img class="logo_image" src="{{ url_for('static', filename='images/logo_diabibastes.jpeg') }}" alt="Logo" class="logo">
     </div>
 
     <!-- Title Section -->
